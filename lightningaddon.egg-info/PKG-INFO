@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: lightningaddon
+Version: 0.0.1
+Summary: Add ons for pytorch lightnin
+Home-page: https://github.com/SubhadityaMukherjee/lightningAddOns
+Author: Subhaditya Mukherjee
+Author-email: msubhaditya@gmail.com
+License: GPLv3+
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# Lightning AddOns
+
+- Additional functionality for [Pytorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning)
+
+## Features (in progress)
+
+
+## FAQ
+- Why?
+        - Well, lightning is an awesome library but there are some things I wanted globally so I decided to make an "Add Ons" package. 
+- Why not contribute instead?
+        - I might once this package does significant extra stuff
+
+
