@@ -11,6 +11,7 @@
 - download from url
 
 ### Torch related
+- model vis using hiddenlayer
 - clear gpu memory easily 
 - flatten a tensor
 - get a histogram

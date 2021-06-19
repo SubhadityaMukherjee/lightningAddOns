@@ -1,11 +1,13 @@
 import concurrent
 import os
+import time
 import urllib
-from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from types import SimpleNamespace
 from typing import *
 
+import pandas as pd
 import wget
 from fastprogress.fastprogress import progress_bar
 
@@ -135,3 +137,15 @@ def download_and_check(url, fpath=".", name=""):
         if not Path.exists(down_path):
             return "Invalid path"
     return down_path
+
+
+def get_last_log(name, fpath="logs"):
+    fpath = Path(fpath)
+    t = os.listdir(fpath / name)
+
+    nos = [str(x.split("_")[1]) for x in t]
+    nos.sort()
+    nos = [int(x) for x in nos[:-1]]
+    nos.sort()
+
+    print(pd.read_csv(fpath / f"{name}/version_{nos[-1]}/metrics.csv").tail(5))

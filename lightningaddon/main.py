@@ -1,6 +1,7 @@
 import os
 import random
 
+import hiddenlayer as hl
 import matplotlib.pyplot as plt
 import numpy as np
 import PIL
@@ -141,3 +142,12 @@ def pil_from_tensor(x):
 
 def pil_to_tensor(x):
     return torchvision.transforms.functional.to_tensor(x)
+
+
+def visualize_model(model, inp_size=[1, 3, 64, 64], device="cuda:0"):
+    """
+    Use hiddenlayer to visualize a model
+    """
+    model = model.to(device)
+    model.eval()
+    return hl.build_graph(model, torch.zeros(inp_size).to(device))
