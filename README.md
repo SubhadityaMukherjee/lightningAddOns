@@ -2,6 +2,10 @@
 
 - Additional functionality for [Pytorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning)
 
+# Useful functions
+- Please check [syntax](syntax.md)
+- For some useful functions check [use](useful.md)
+
 ## Features (in progress)
 - The documentation is in progress and of course, many more features are on the way. 
 ### General
@@ -13,7 +17,7 @@
 ### Torch related
 - model vis using hiddenlayer
 - clear gpu memory easily 
-- flatten a tensor
+- flatten
 - get a histogram
 - find modules with a condition
 - check if linear layer
@@ -23,6 +27,9 @@
 - count paramemeter state (frozen/unfrozen)
 - easy pil<->tensor
 - open image -> resize -> convert to tensor
+
+## Models
+- xresnet (all variants)
 
 
 ## FAQ

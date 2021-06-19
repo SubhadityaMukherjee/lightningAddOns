@@ -10,6 +10,12 @@ import torchvision
 from prettytable import PrettyTable
 from torch import nn
 
+"""
+This module contains all the new add ons for torch
+"""
+
+torch.Tensor.ndim = property(lambda x: len(x.shape))
+
 
 def flatten(x):
     """
@@ -72,6 +78,11 @@ def seed_everything(seed=42):
 
 
 class FreezeUnfreeze:
+    """
+    Main freeze or unfreeze class
+
+    """
+
     def __init__(self, model, switch, to=None):
         self.model = model
         self.switch = switch  # 0 for freeze, 1 for unfreeze
@@ -91,14 +102,26 @@ class FreezeUnfreeze:
 
 
 def freeze_to(model, to=None):
+    """
+    Freeze upto a layer
+
+    """
     FreezeUnfreeze(model, 0, to).runner()
 
 
 def unfreeze_to(model, to=None):
+    """
+    Unfreeze to a layer
+
+    """
     FreezeUnfreeze(model, 1, to).runner()
 
 
 def count_parameters(model, show_table=False):
+    """
+    Count number of parameters and show table
+
+    """
     table = PrettyTable(["Modules", "Parameters"])
     total_params = 0
     for name, parameter in model.named_parameters():
@@ -115,16 +138,28 @@ def count_parameters(model, show_table=False):
 
 
 def param_state(x):
+    """
+    Return state of a single param
+
+    """
     return x.requires_grad
 
 
 def total_layer_state(learn):
+    """
+    Get number of frozen, unfrozen and total layers
+
+    """
     ps = [param_state(x) for x in learn.model.parameters()]
     frozen = ps.count(False)
     return f"Frozen: {frozen}, Not: {len(ps)-frozen}, Total: {len(ps)}"
 
 
 def open_image(fpath, size, convert_to="", to_tensor=False, perm=()):
+    """
+    Open image
+
+    """
     tem = PIL.Image.open(fpath).resize(size)
     if len(convert_to) > 1:
         tem = tem.convert(convert_to)
@@ -137,10 +172,18 @@ def open_image(fpath, size, convert_to="", to_tensor=False, perm=()):
 
 
 def pil_from_tensor(x):
+    """
+    Convert to tensor from pil
+
+    """
     return torchvision.transforms.functional.to_pil_image(x)
 
 
 def pil_to_tensor(x):
+    """
+    Convert to pil from tensor
+
+    """
     return torchvision.transforms.functional.to_tensor(x)
 
 

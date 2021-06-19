@@ -11,8 +11,15 @@ import pandas as pd
 import wget
 from fastprogress.fastprogress import progress_bar
 
+"""
+This module contains all the general add ons
+"""
+
 
 def ifnone(a, b):
+    """
+    Return if None
+    """
     return b if a is None else a
 
 
@@ -140,6 +147,10 @@ def download_and_check(url, fpath=".", name=""):
 
 
 def get_last_log(name, fpath="logs"):
+    """
+    Get last log and print last 5 lines
+
+    """
     fpath = Path(fpath)
     t = os.listdir(fpath / name)
 
@@ -149,3 +160,14 @@ def get_last_log(name, fpath="logs"):
     nos.sort()
 
     print(pd.read_csv(fpath / f"{name}/version_{nos[-1]}/metrics.csv").tail(5))
+
+
+def split_by_func(items, f):
+    """
+    Split a list by a function
+
+    """
+    mask = [f(o) for o in items]
+    f = [o for o, m in zip(items, mask) if m == False]
+    t = [o for o, m in zip(items, mask) if m == True]
+    return f, t
