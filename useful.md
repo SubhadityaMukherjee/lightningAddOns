@@ -1,38 +1,110 @@
 # Useful functions
-- lightningaddon/general.py:Function: compose(x, funcs, *args, order_key="_order", **kwargs): 
-- lightningaddon/general.py:Function: timeit(method): 
-- lightningaddon/general.py:Function: parallel(func, arr: Collection, max_workers: int = None, leave=False): 
-- lightningaddon/general.py:Function: download_and_check(url, fpath=".", name=""): 
-- lightningaddon/general.py:Function: get_last_log(name, fpath="logs"): 
-- lightningaddon/layers.py:Function: init_cnn(m): 
-- lightningaddon/layers.py:Function: init_Function:ault(m: nn.Module, func=nn.init.kaiming_normal_) -> nn.Module: 
-- lightningaddon/layers.py:Class : Flatten(nn.Module): 
-- lightningaddon/layers.py:Class : GeneralRelu(nn.Module): 
-- lightningaddon/layers.py:Class : AdaptiveConcatPool2d(nn.Module): 
-- lightningaddon/loss.py:Function: logsumexp(x): 
-- lightningaddon/loss.py:Function: flatten_check(out, targ): 
-- lightningaddon/loss.py:Function: exp_rmspe(pred, targ): 
-- lightningaddon/loss.py:Function: mean_squared_error(pred, targ): 
-- lightningaddon/loss.py:Function: psnr(input, targs): 
-- lightningaddon/loss.py:Function: explained_variance(pred, targ): 
-- lightningaddon/loss.py:Function: r2_score(pred, targ): 
-- lightningaddon/loss.py:Function: auc_roc_score(input, targ): 
-- lightningaddon/loss.py:Function: roc_curve(input, targ): 
-- lightningaddon/loss.py:Function: dice(input, targs, iou=False, eps=1e-8): 
-- lightningaddon/loss.py:Function: WasserteinLoss(real, fake): 
-- lightningaddon/loss.py:Function: fbeta(y_pred, y_true, thresh=0.2, beta=2, eps=1e-9, sigmoid=True): 
-- lightningaddon/tests.py:Function: test_eq(a, b): 
-- lightningaddon/tests.py:Function: test_near(a, b): 
-- lightningaddon/main.py:Function: find_modules(m, cond): 
-- lightningaddon/main.py:Function: is_lin_layer(l): 
-- lightningaddon/main.py:Function: clear_memory(): 
-- lightningaddon/main.py:Function: seed_everything(seed=42): 
-- lightningaddon/main.py:Function: freeze_to(model, to=None): 
-- lightningaddon/main.py:Function: unfreeze_to(model, to=None): 
-- lightningaddon/main.py:Function: count_parameters(model, show_table=False): 
-- lightningaddon/main.py:Function: total_layer_state(learn): 
-- lightningaddon/main.py:Function: open_image(fpath, size, convert_to="", to_tensor=False, perm=()): 
-- lightningaddon/main.py:Function: pil_from_tensor(x): 
-- lightningaddon/main.py:Function: pil_to_tensor(x): 
-- lightningaddon/main.py:Function: visualize_model(model, inp_size=[1, 3, 64, 64], device="cuda:0"): 
-- pusher.sh:echo "# Useful functions">useful.md && rg %t| rev |cut -c5- |rev |sed 's/^/- / ; s/Function:/Function:/g ; s/Class :/Class :/g' >> useful
+- general.html:Function: compose(x, funcs, *args, order_key=&#34;_order&#34;, **kwargs): 
+- general.html:Function: timeit(method): 
+- general.html:Function: parallel(func, arr: Collection, max_workers: int = None, leave=False): 
+- general.html:Function: download_and_check(url, fpath=&#34;.&#34;, name=&#34;&#34;): 
+- general.html:Function: get_last_log(name, fpath=&#34;logs&#34;): 
+- general.html:<pre><code Class :="python">Function: compose(x, funcs, *args, order_key=&#34;_order&#34;, **kwargs): 
+- general.html:<pre><code Class :="python">Function: download_and_check(url, fpath=&#34;.&#34;, name=&#34;&#34;): 
+- general.html:<pre><code Class :="python">Function: get_last_log(name, fpath=&#34;logs&#34;): 
+- general.html:<pre><code Class :="python">Function: parallel(func, arr: Collection, max_workers: int = None, leave=False): 
+- general.html:<pre><code Class :="python">Function: timeit(method): 
+- layers.html:Function: init_cnn(m): 
+- layers.html:Function: init_Function:ault(m: nn.Module, func=nn.init.kaiming_normal_) -&gt; nn.Module: 
+- layers.html:Class : Flatten(nn.Module): 
+- layers.html:Class : GeneralRelu(nn.Module): 
+- layers.html:Class : AdaptiveConcatPool2d(nn.Module): 
+- layers.html:<pre><code Class :="python">Function: init_cnn(m): 
+- layers.html:<pre><code Class :="python">Function: init_Function:ault(m: nn.Module, func=nn.init.kaiming_normal_) -&gt; nn.Module: 
+- layers.html:<pre><code Class :="python">Class : AdaptiveConcatPool2d(nn.Module): 
+- layers.html:<pre><code Class :="python">Class : Flatten(nn.Module): 
+- layers.html:<pre><code Class :="python">Class : GeneralRelu(nn.Module): 
+- main.html:Function: find_modules(m, cond): 
+- main.html:Function: is_lin_layer(l): 
+- main.html:Function: clear_memory(): 
+- main.html:Function: seed_everything(seed=42): 
+- main.html:Function: freeze_to(model, to=None): 
+- main.html:Function: unfreeze_to(model, to=None): 
+- main.html:Function: count_parameters(model, show_table=False): 
+- main.html:Function: total_layer_state(learn): 
+- main.html:Function: open_image(fpath, size, convert_to=&#34;&#34;, to_tensor=False, perm=()): 
+- main.html:Function: pil_from_tensor(x): 
+- main.html:Function: pil_to_tensor(x): 
+- main.html:Function: visualize_model(model, inp_size=[1, 3, 64, 64], device=&#34;cuda:0&#34;): 
+- main.html:<pre><code Class :="python">Function: clear_memory(): 
+- main.html:<pre><code Class :="python">Function: count_parameters(model, show_table=False): 
+- main.html:<pre><code Class :="python">Function: find_modules(m, cond): 
+- main.html:<pre><code Class :="python">Function: freeze_to(model, to=None): 
+- main.html:<pre><code Class :="python">Function: is_lin_layer(l): 
+- main.html:<pre><code Class :="python">Function: open_image(fpath, size, convert_to=&#34;&#34;, to_tensor=False, perm=()): 
+- main.html:<pre><code Class :="python">Function: pil_from_tensor(x): 
+- main.html:<pre><code Class :="python">Function: pil_to_tensor(x): 
+- main.html:<pre><code Class :="python">Function: seed_everything(seed=42): 
+- main.html:<pre><code Class :="python">Function: total_layer_state(learn): 
+- main.html:<pre><code Class :="python">Function: unfreeze_to(model, to=None): 
+- main.html:<pre><code Class :="python">Function: visualize_model(model, inp_size=[1, 3, 64, 64], device=&#34;cuda:0&#34;): 
+- tests.html:Function: test_eq(a, b): 
+- tests.html:Function: test_near(a, b): 
+- tests.html:<pre><code Class :="python">Function: test_eq(a, b): 
+- tests.html:<pre><code Class :="python">Function: test_near(a, b): 
+- loss.html:Function: logsumexp(x): 
+- loss.html:Function: flatten_check(out, targ): 
+- loss.html:Function: exp_rmspe(pred, targ): 
+- loss.html:Function: mean_squared_error(pred, targ): 
+- loss.html:Function: psnr(input, targs): 
+- loss.html:Function: explained_variance(pred, targ): 
+- loss.html:Function: r2_score(pred, targ): 
+- loss.html:Function: auc_roc_score(input, targ): 
+- loss.html:Function: roc_curve(input, targ): 
+- loss.html:Function: dice(input, targs, iou=False, eps=1e-8): 
+- loss.html:Function: WasserteinLoss(real, fake): 
+- loss.html:Function: fbeta(y_pred, y_true, thresh=0.2, beta=2, eps=1e-9, sigmoid=True): 
+- loss.html:<pre><code Class :="python">Function: WasserteinLoss(real, fake): 
+- loss.html:<pre><code Class :="python">Function: auc_roc_score(input, targ): 
+- loss.html:<pre><code Class :="python">Function: dice(input, targs, iou=False, eps=1e-8): 
+- loss.html:<pre><code Class :="python">Function: exp_rmspe(pred, targ): 
+- loss.html:<pre><code Class :="python">Function: explained_variance(pred, targ): 
+- loss.html:<pre><code Class :="python">Function: fbeta(y_pred, y_true, thresh=0.2, beta=2, eps=1e-9, sigmoid=True): 
+- loss.html:<pre><code Class :="python">Function: flatten_check(out, targ): 
+- loss.html:<pre><code Class :="python">Function: logsumexp(x): 
+- loss.html:<pre><code Class :="python">Function: mean_squared_error(pred, targ): 
+- loss.html:<pre><code Class :="python">Function: psnr(input, targs): 
+- loss.html:<pre><code Class :="python">Function: r2_score(pred, targ): 
+- loss.html:<pre><code Class :="python">Function: roc_curve(input, targ): 
+- ' -f2| rev |cut -c5- |rev |se
+- general.py:Function: compose(x, funcs, *args, order_key="_order", **kwargs): 
+- general.py:Function: timeit(method): 
+- general.py:Function: parallel(func, arr: Collection, max_workers: int = None, leave=False): 
+- general.py:Function: download_and_check(url, fpath=".", name=""): 
+- general.py:Function: get_last_log(name, fpath="logs"): 
+- tests.py:Function: test_eq(a, b): 
+- tests.py:Function: test_near(a, b): 
+- loss.py:Function: logsumexp(x): 
+- loss.py:Function: flatten_check(out, targ): 
+- loss.py:Function: exp_rmspe(pred, targ): 
+- loss.py:Function: mean_squared_error(pred, targ): 
+- loss.py:Function: psnr(input, targs): 
+- loss.py:Function: explained_variance(pred, targ): 
+- loss.py:Function: r2_score(pred, targ): 
+- loss.py:Function: auc_roc_score(input, targ): 
+- loss.py:Function: roc_curve(input, targ): 
+- loss.py:Function: dice(input, targs, iou=False, eps=1e-8): 
+- loss.py:Function: WasserteinLoss(real, fake): 
+- loss.py:Function: fbeta(y_pred, y_true, thresh=0.2, beta=2, eps=1e-9, sigmoid=True): 
+- layers.py:Function: init_cnn(m): 
+- layers.py:Function: init_Function:ault(m: nn.Module, func=nn.init.kaiming_normal_) -> nn.Module: 
+- layers.py:Class : Flatten(nn.Module): 
+- layers.py:Class : GeneralRelu(nn.Module): 
+- layers.py:Class : AdaptiveConcatPool2d(nn.Module): 
+- main.py:Function: find_modules(m, cond): 
+- main.py:Function: is_lin_layer(l): 
+- main.py:Function: clear_memory(): 
+- main.py:Function: seed_everything(seed=42): 
+- main.py:Function: freeze_to(model, to=None): 
+- main.py:Function: unfreeze_to(model, to=None): 
+- main.py:Function: count_parameters(model, show_table=False): 
+- main.py:Function: total_layer_state(learn): 
+- main.py:Function: open_image(fpath, size, convert_to="", to_tensor=False, perm=()): 
+- main.py:Function: pil_from_tensor(x): 
+- main.py:Function: pil_to_tensor(x): 
+- main.py:Function: visualize_model(model, inp_size=[1, 3, 64, 64], device="cuda:0"): 
