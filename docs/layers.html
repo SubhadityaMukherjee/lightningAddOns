@@ -38,10 +38,14 @@ This module contains all the new layers
 
 
 def noop(x):
+    &#34;&#34;&#34;
+    No operation
+
+    &#34;&#34;&#34;
     return x
 
 
-def init_cnn(m):
+def init_cnn(m):  #%t
     &#34;&#34;&#34;
     Initialize a cnn with kaiming_normal_ or constant
     &#34;&#34;&#34;
@@ -53,7 +57,7 @@ def init_cnn(m):
         init_cnn(l)
 
 
-def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -&gt; nn.Module:
+def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -&gt; nn.Module:  #%t
     &#34;Initialize `m` weights with `func` and set `bias` to 0.&#34;
     if func:
         if hasattr(m, &#34;weight&#34;):
@@ -63,7 +67,7 @@ def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -&gt; nn.Module:
     return m
 
 
-class Flatten(nn.Module):
+class Flatten(nn.Module):  #%t
     &#34;&#34;&#34;
     Flatten
     &#34;&#34;&#34;
@@ -72,7 +76,7 @@ class Flatten(nn.Module):
         return x.view(x.size(0), -1)
 
 
-class GeneralRelu(nn.Module):
+class GeneralRelu(nn.Module):  #%t
     &#34;&#34;&#34;
     General with leak or clipping if required
     &#34;&#34;&#34;
@@ -90,7 +94,7 @@ class GeneralRelu(nn.Module):
         return x
 
 
-class AdaptiveConcatPool2d(nn.Module):
+class AdaptiveConcatPool2d(nn.Module):  #%t
     &#34;&#34;&#34;
     AdaptiveAvgPool2d + AdaptiveMaxPool2d
 
@@ -122,7 +126,7 @@ class AdaptiveConcatPool2d(nn.Module):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def init_cnn(m):
+<pre><code class="python">def init_cnn(m):  #%t
     &#34;&#34;&#34;
     Initialize a cnn with kaiming_normal_ or constant
     &#34;&#34;&#34;
@@ -143,7 +147,7 @@ class AdaptiveConcatPool2d(nn.Module):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -&gt; nn.Module:
+<pre><code class="python">def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -&gt; nn.Module:  #%t
     &#34;Initialize `m` weights with `func` and set `bias` to 0.&#34;
     if func:
         if hasattr(m, &#34;weight&#34;):
@@ -157,12 +161,16 @@ class AdaptiveConcatPool2d(nn.Module):
 <span>def <span class="ident">noop</span></span>(<span>x)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>No operation</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def noop(x):
+    &#34;&#34;&#34;
+    No operation
+
+    &#34;&#34;&#34;
     return x</code></pre>
 </details>
 </dd>
@@ -182,7 +190,7 @@ class AdaptiveConcatPool2d(nn.Module):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class AdaptiveConcatPool2d(nn.Module):
+<pre><code class="python">class AdaptiveConcatPool2d(nn.Module):  #%t
     &#34;&#34;&#34;
     AdaptiveAvgPool2d + AdaptiveMaxPool2d
 
@@ -247,7 +255,7 @@ registered hooks while the latter silently ignores them.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class Flatten(nn.Module):
+<pre><code class="python">class Flatten(nn.Module):  #%t
     &#34;&#34;&#34;
     Flatten
     &#34;&#34;&#34;
@@ -306,7 +314,7 @@ registered hooks while the latter silently ignores them.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class GeneralRelu(nn.Module):
+<pre><code class="python">class GeneralRelu(nn.Module):  #%t
     &#34;&#34;&#34;
     General with leak or clipping if required
     &#34;&#34;&#34;

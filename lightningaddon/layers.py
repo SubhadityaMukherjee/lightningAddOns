@@ -10,10 +10,14 @@ This module contains all the new layers
 
 
 def noop(x):
+    """
+    No operation
+
+    """
     return x
 
 
-def init_cnn(m):
+def init_cnn(m):  #%t
     """
     Initialize a cnn with kaiming_normal_ or constant
     """
@@ -25,7 +29,7 @@ def init_cnn(m):
         init_cnn(l)
 
 
-def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -> nn.Module:
+def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -> nn.Module:  #%t
     "Initialize `m` weights with `func` and set `bias` to 0."
     if func:
         if hasattr(m, "weight"):
@@ -35,7 +39,7 @@ def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -> nn.Module:
     return m
 
 
-class Flatten(nn.Module):
+class Flatten(nn.Module):  #%t
     """
     Flatten
     """
@@ -44,7 +48,7 @@ class Flatten(nn.Module):
         return x.view(x.size(0), -1)
 
 
-class GeneralRelu(nn.Module):
+class GeneralRelu(nn.Module):  #%t
     """
     General with leak or clipping if required
     """
@@ -62,7 +66,7 @@ class GeneralRelu(nn.Module):
         return x
 
 
-class AdaptiveConcatPool2d(nn.Module):
+class AdaptiveConcatPool2d(nn.Module):  #%t
     """
     AdaptiveAvgPool2d + AdaptiveMaxPool2d
 

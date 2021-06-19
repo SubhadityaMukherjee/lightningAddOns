@@ -1,0 +1,38 @@
+# Useful functions
+- lightningaddon/general.py:Function: compose(x, funcs, *args, order_key="_order", **kwargs): 
+- lightningaddon/general.py:Function: timeit(method): 
+- lightningaddon/general.py:Function: parallel(func, arr: Collection, max_workers: int = None, leave=False): 
+- lightningaddon/general.py:Function: download_and_check(url, fpath=".", name=""): 
+- lightningaddon/general.py:Function: get_last_log(name, fpath="logs"): 
+- lightningaddon/layers.py:Function: init_cnn(m): 
+- lightningaddon/layers.py:Function: init_Function:ault(m: nn.Module, func=nn.init.kaiming_normal_) -> nn.Module: 
+- lightningaddon/layers.py:Class : Flatten(nn.Module): 
+- lightningaddon/layers.py:Class : GeneralRelu(nn.Module): 
+- lightningaddon/layers.py:Class : AdaptiveConcatPool2d(nn.Module): 
+- lightningaddon/loss.py:Function: logsumexp(x): 
+- lightningaddon/loss.py:Function: flatten_check(out, targ): 
+- lightningaddon/loss.py:Function: exp_rmspe(pred, targ): 
+- lightningaddon/loss.py:Function: mean_squared_error(pred, targ): 
+- lightningaddon/loss.py:Function: psnr(input, targs): 
+- lightningaddon/loss.py:Function: explained_variance(pred, targ): 
+- lightningaddon/loss.py:Function: r2_score(pred, targ): 
+- lightningaddon/loss.py:Function: auc_roc_score(input, targ): 
+- lightningaddon/loss.py:Function: roc_curve(input, targ): 
+- lightningaddon/loss.py:Function: dice(input, targs, iou=False, eps=1e-8): 
+- lightningaddon/loss.py:Function: WasserteinLoss(real, fake): 
+- lightningaddon/loss.py:Function: fbeta(y_pred, y_true, thresh=0.2, beta=2, eps=1e-9, sigmoid=True): 
+- lightningaddon/tests.py:Function: test_eq(a, b): 
+- lightningaddon/tests.py:Function: test_near(a, b): 
+- lightningaddon/main.py:Function: find_modules(m, cond): 
+- lightningaddon/main.py:Function: is_lin_layer(l): 
+- lightningaddon/main.py:Function: clear_memory(): 
+- lightningaddon/main.py:Function: seed_everything(seed=42): 
+- lightningaddon/main.py:Function: freeze_to(model, to=None): 
+- lightningaddon/main.py:Function: unfreeze_to(model, to=None): 
+- lightningaddon/main.py:Function: count_parameters(model, show_table=False): 
+- lightningaddon/main.py:Function: total_layer_state(learn): 
+- lightningaddon/main.py:Function: open_image(fpath, size, convert_to="", to_tensor=False, perm=()): 
+- lightningaddon/main.py:Function: pil_from_tensor(x): 
+- lightningaddon/main.py:Function: pil_to_tensor(x): 
+- lightningaddon/main.py:Function: visualize_model(model, inp_size=[1, 3, 64, 64], device="cuda:0"): 
+- pusher.sh:echo "# Useful functions">useful.md && rg %t| rev |cut -c5- |rev |sed 's/^/- / ; s/Function:/Function:/g ; s/Class :/Class :/g' >> useful

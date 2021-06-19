@@ -44,7 +44,7 @@ def test(a, b, cmp, cname=None):
         assert cmp(a, b), f&#34;{cname}: \n{a}\n{b}&#34;
 
 
-def test_eq(a, b):
+def test_eq(a, b):  #%t
     &#34;&#34;&#34;
     Test if equal
 
@@ -56,7 +56,7 @@ def near(a, b):
     return torch.allclose(a, b, rtol=1e-3, atol=1e-5)
 
 
-def test_near(a, b):
+def test_near(a, b):  #%t
     &#34;&#34;&#34;
     Test if two values are near each other
 
@@ -111,7 +111,7 @@ def test_near(a, b):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def test_eq(a, b):
+<pre><code class="python">def test_eq(a, b):  #%t
     &#34;&#34;&#34;
     Test if equal
 
@@ -128,7 +128,7 @@ def test_near(a, b):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def test_near(a, b):
+<pre><code class="python">def test_near(a, b):  #%t
     &#34;&#34;&#34;
     Test if two values are near each other
 

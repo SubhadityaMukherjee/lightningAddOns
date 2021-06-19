@@ -66,7 +66,7 @@ def listify(o):
     return [o]
 
 
-def compose(x, funcs, *args, order_key=&#34;_order&#34;, **kwargs):
+def compose(x, funcs, *args, order_key=&#34;_order&#34;, **kwargs):  #%t
     &#34;&#34;&#34;
     Chain functions
     &#34;&#34;&#34;
@@ -76,7 +76,7 @@ def compose(x, funcs, *args, order_key=&#34;_order&#34;, **kwargs):
     return x
 
 
-def timeit(method):
+def timeit(method):  #%t
     &#34;&#34;&#34;
     Helper to time a function
     &#34;&#34;&#34;
@@ -109,7 +109,7 @@ defaults = SimpleNamespace(
 )
 
 
-def parallel(func, arr: Collection, max_workers: int = None, leave=False):
+def parallel(func, arr: Collection, max_workers: int = None, leave=False):  #%t
     &#34;Call `func` on every element of `arr` in parallel using `max_workers`.&#34;
     max_workers = ifnone(max_workers, defaults.cpus)
     if max_workers &lt; 2:
@@ -153,7 +153,7 @@ def bar_progress(current, total, width=80):
     sys.stdout.flush()
 
 
-def download_and_check(url, fpath=&#34;.&#34;, name=&#34;&#34;):
+def download_and_check(url, fpath=&#34;.&#34;, name=&#34;&#34;):  #%t
     &#34;&#34;&#34;
     Download and save if url or just take path
     &#34;&#34;&#34;
@@ -174,7 +174,7 @@ def download_and_check(url, fpath=&#34;.&#34;, name=&#34;&#34;):
     return down_path
 
 
-def get_last_log(name, fpath=&#34;logs&#34;):
+def get_last_log(name, fpath=&#34;logs&#34;):  #%t
     &#34;&#34;&#34;
     Get last log and print last 5 lines
 
@@ -240,7 +240,7 @@ def split_by_func(items, f):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def compose(x, funcs, *args, order_key=&#34;_order&#34;, **kwargs):
+<pre><code class="python">def compose(x, funcs, *args, order_key=&#34;_order&#34;, **kwargs):  #%t
     &#34;&#34;&#34;
     Chain functions
     &#34;&#34;&#34;
@@ -259,7 +259,7 @@ def split_by_func(items, f):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def download_and_check(url, fpath=&#34;.&#34;, name=&#34;&#34;):
+<pre><code class="python">def download_and_check(url, fpath=&#34;.&#34;, name=&#34;&#34;):  #%t
     &#34;&#34;&#34;
     Download and save if url or just take path
     &#34;&#34;&#34;
@@ -289,7 +289,7 @@ def split_by_func(items, f):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def get_last_log(name, fpath=&#34;logs&#34;):
+<pre><code class="python">def get_last_log(name, fpath=&#34;logs&#34;):  #%t
     &#34;&#34;&#34;
     Get last log and print last 5 lines
 
@@ -390,7 +390,7 @@ def split_by_func(items, f):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def parallel(func, arr: Collection, max_workers: int = None, leave=False):
+<pre><code class="python">def parallel(func, arr: Collection, max_workers: int = None, leave=False):  #%t
     &#34;Call `func` on every element of `arr` in parallel using `max_workers`.&#34;
     max_workers = ifnone(max_workers, defaults.cpus)
     if max_workers &lt; 2:
@@ -439,7 +439,7 @@ def split_by_func(items, f):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def timeit(method):
+<pre><code class="python">def timeit(method):  #%t
     &#34;&#34;&#34;
     Helper to time a function
     &#34;&#34;&#34;

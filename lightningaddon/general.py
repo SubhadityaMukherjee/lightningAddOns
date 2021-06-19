@@ -38,7 +38,7 @@ def listify(o):
     return [o]
 
 
-def compose(x, funcs, *args, order_key="_order", **kwargs):
+def compose(x, funcs, *args, order_key="_order", **kwargs):  #%t
     """
     Chain functions
     """
@@ -48,7 +48,7 @@ def compose(x, funcs, *args, order_key="_order", **kwargs):
     return x
 
 
-def timeit(method):
+def timeit(method):  #%t
     """
     Helper to time a function
     """
@@ -81,7 +81,7 @@ defaults = SimpleNamespace(
 )
 
 
-def parallel(func, arr: Collection, max_workers: int = None, leave=False):
+def parallel(func, arr: Collection, max_workers: int = None, leave=False):  #%t
     "Call `func` on every element of `arr` in parallel using `max_workers`."
     max_workers = ifnone(max_workers, defaults.cpus)
     if max_workers < 2:
@@ -125,7 +125,7 @@ def bar_progress(current, total, width=80):
     sys.stdout.flush()
 
 
-def download_and_check(url, fpath=".", name=""):
+def download_and_check(url, fpath=".", name=""):  #%t
     """
     Download and save if url or just take path
     """
@@ -146,7 +146,7 @@ def download_and_check(url, fpath=".", name=""):
     return down_path
 
 
-def get_last_log(name, fpath="logs"):
+def get_last_log(name, fpath="logs"):  #%t
     """
     Get last log and print last 5 lines
 

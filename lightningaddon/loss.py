@@ -6,12 +6,12 @@ This module contains all the new loss functions
 """
 
 
-def logsumexp(x):
+def logsumexp(x):  #%t
     m = x.max(-1)[0]
     return m + (x - m[:, None]).exp().sum(-1).log()
 
 
-def flatten_check(out, targ):
+def flatten_check(out, targ):  #%t
     "Check that `out` and `targ` have the same number of elements and flatten them."
     out, targ = out.contiguous().view(-1), targ.contiguous().view(-1)
     assert len(out) == len(
@@ -20,7 +20,7 @@ def flatten_check(out, targ):
     return out, targ
 
 
-def exp_rmspe(pred, targ):
+def exp_rmspe(pred, targ):  #%t
     "Exp RMSE between `pred` and `targ`."
     pred, targ = flatten_check(pred, targ)
     pred, targ = torch.exp(pred), torch.exp(targ)
@@ -28,23 +28,23 @@ def exp_rmspe(pred, targ):
     return torch.sqrt((pct_var ** 2).mean())
 
 
-def mean_squared_error(pred, targ):
+def mean_squared_error(pred, targ):  #%t
     "Mean squared error between `pred` and `targ`."
     pred, targ = flatten_check(pred, targ)
     return F.mse_loss(pred, targ)
 
 
-def psnr(input, targs):
+def psnr(input, targs):  #%t
     return 10 * (1.0 / mean_squared_error(input, targs)).log10()
 
 
-def explained_variance(pred, targ):
+def explained_variance(pred, targ):  #%t
     pred, targ = flatten_check(pred, targ)
     var_pct = torch.var(targ - pred) / torch.var(targ)
     return 1 - var_pct
 
 
-def r2_score(pred, targ):
+def r2_score(pred, targ):  #%t
     """
     R2 score
 
@@ -55,7 +55,7 @@ def r2_score(pred, targ):
     return 1 - u / d
 
 
-def auc_roc_score(input, targ):
+def auc_roc_score(input, targ):  #%t
     "Computes the area under the receiver operator characteristic (ROC) curve using the trapezoid method. Restricted binary classification tasks."
     fpr, tpr = roc_curve(input, targ)
     d = fpr[1:] - fpr[:-1]
@@ -64,7 +64,7 @@ def auc_roc_score(input, targ):
     return (d * (tpr[tuple(sl1)] + tpr[tuple(sl2)]) / 2.0).sum(-1)
 
 
-def roc_curve(input, targ):
+def roc_curve(input, targ):  #%t
     "Computes the receiver operator characteristic (ROC) curve by determining the true positive ratio (TPR) and false positive ratio (FPR) for various classification thresholds. Restricted binary classification tasks."
     targ = targ == 1
     desc_score_indices = torch.flip(input.argsort(-1), [-1])
@@ -85,7 +85,7 @@ def roc_curve(input, targ):
     return fpr, tpr
 
 
-def dice(input, targs, iou=False, eps=1e-8):
+def dice(input, targs, iou=False, eps=1e-8):  #%t
     """
     Dice score
 
@@ -103,7 +103,7 @@ def dice(input, targs, iou=False, eps=1e-8):
     return l.mean()
 
 
-def WasserteinLoss(real, fake):
+def WasserteinLoss(real, fake):  #%t
     """
     WasserteinLoss
 
@@ -111,7 +111,7 @@ def WasserteinLoss(real, fake):
     return real.mean() - fake.mean()
 
 
-def fbeta(y_pred, y_true, thresh=0.2, beta=2, eps=1e-9, sigmoid=True):
+def fbeta(y_pred, y_true, thresh=0.2, beta=2, eps=1e-9, sigmoid=True):  #%t
     """
     FBeta loss
 

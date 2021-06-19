@@ -39,7 +39,7 @@ def get_min(h):
     return h1[19:22].sum(0) / h1.sum(0)
 
 
-def find_modules(m, cond):
+def find_modules(m, cond):  #%t
     """
     Return modules with a condition
     """
@@ -48,7 +48,7 @@ def find_modules(m, cond):
     return sum([find_modules(o, cond) for o in m.children()], [])
 
 
-def is_lin_layer(l):
+def is_lin_layer(l):  #%t
     """
     Check if linear
     """
@@ -56,14 +56,14 @@ def is_lin_layer(l):
     return isinstance(l, lin_layers)
 
 
-def clear_memory():
+def clear_memory():  #%t
     """
     Clear GPU cache
     """
     torch.cuda.empty_cache()
 
 
-def seed_everything(seed=42):
+def seed_everything(seed=42):  #%t
     """
     Seed everything with a number
     """
@@ -101,7 +101,7 @@ class FreezeUnfreeze:
                 self.count += 1
 
 
-def freeze_to(model, to=None):
+def freeze_to(model, to=None):  #%t
     """
     Freeze upto a layer
 
@@ -109,7 +109,7 @@ def freeze_to(model, to=None):
     FreezeUnfreeze(model, 0, to).runner()
 
 
-def unfreeze_to(model, to=None):
+def unfreeze_to(model, to=None):  #%t
     """
     Unfreeze to a layer
 
@@ -117,7 +117,7 @@ def unfreeze_to(model, to=None):
     FreezeUnfreeze(model, 1, to).runner()
 
 
-def count_parameters(model, show_table=False):
+def count_parameters(model, show_table=False):  #%t
     """
     Count number of parameters and show table
 
@@ -145,7 +145,7 @@ def param_state(x):
     return x.requires_grad
 
 
-def total_layer_state(learn):
+def total_layer_state(learn):  #%t
     """
     Get number of frozen, unfrozen and total layers
 
@@ -155,7 +155,7 @@ def total_layer_state(learn):
     return f"Frozen: {frozen}, Not: {len(ps)-frozen}, Total: {len(ps)}"
 
 
-def open_image(fpath, size, convert_to="", to_tensor=False, perm=()):
+def open_image(fpath, size, convert_to="", to_tensor=False, perm=()):  #%t
     """
     Open image
 
@@ -171,7 +171,7 @@ def open_image(fpath, size, convert_to="", to_tensor=False, perm=()):
     return tem
 
 
-def pil_from_tensor(x):
+def pil_from_tensor(x):  #%t
     """
     Convert to tensor from pil
 
@@ -179,7 +179,7 @@ def pil_from_tensor(x):
     return torchvision.transforms.functional.to_pil_image(x)
 
 
-def pil_to_tensor(x):
+def pil_to_tensor(x):  #%t
     """
     Convert to pil from tensor
 
@@ -187,7 +187,7 @@ def pil_to_tensor(x):
     return torchvision.transforms.functional.to_tensor(x)
 
 
-def visualize_model(model, inp_size=[1, 3, 64, 64], device="cuda:0"):
+def visualize_model(model, inp_size=[1, 3, 64, 64], device="cuda:0"):  #%t
     """
     Use hiddenlayer to visualize a model
     """
