@@ -3,7 +3,7 @@
 - Additional functionality for [Pytorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning)
 
 # Useful functions
-- Please check [syntax](syntax.md)
+- Please check [DOCUMENTATION](https://subhadityamukherjee.github.io/lightningAddOns/)
 - For some useful functions check [use](useful.md)
 
 ## Features (in progress)
