@@ -1,5 +1,5 @@
 black "." && isort .
-echo "# Useful functions">useful.md && rg %t|cut -d'/' -f2| rev |cut -c5- |rev |sed 's/^/- / ; s/def/Function:/g ; s/class/Class :/g' >> useful.md;
+echo "# Useful functions">useful.md && rg %t| rev |cut -c5- |rev |sed 's/^/- / ; s/def/Function:/g ; s/class/Class :/g' >> useful.md;
 pdoc --force --html -o docs lightningaddon
 mv docs/lightningaddon/index.html docs/index.md
 mv docs/lightningaddon/* docs/
