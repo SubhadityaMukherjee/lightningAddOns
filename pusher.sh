@@ -1,5 +1,5 @@
 black "." && isort .
-pdoc --force --html -o lightningaddon
+pdoc --force --html -o docs lightningaddon
 mv docs/lightningaddon/index.html docs/index.md
 mv docs/lightningaddon/* docs/
 if [[ ! -z $1 ]]; then
