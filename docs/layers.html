@@ -29,8 +29,9 @@
 <pre><code class="python">import torch
 import torch.nn.functional as F
 import torchvision.models as m
+from einops import asnumpy, parse_shape, rearrange, reduce
+from einops.layers.torch import Rearrange, Reduce
 from torch import nn
-from torch.nn.utils import spectral_norm, weight_norm
 
 &#34;&#34;&#34;
 This module contains all the new layers 
@@ -67,7 +68,14 @@ def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -&gt; nn.Module:  #
     return m
 
 
-class Flatten(nn.Module):  #%t
+def avgpoolflatten():  #%t
+    &#34;&#34;&#34;
+    avgpool + Flatten for sequential
+    &#34;&#34;&#34;
+    return nn.Sequential(Reduce(&#34;b c h w -&gt; b c&#34;, &#34;mean&#34;))  # combine avg pool + view
+
+
+class flatten(nn.Module):  #%t
     &#34;&#34;&#34;
     Flatten
     &#34;&#34;&#34;
@@ -117,6 +125,22 @@ class AdaptiveConcatPool2d(nn.Module):  #%t
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="lightningaddon.layers.avgpoolflatten"><code class="name flex">
+<span>def <span class="ident">avgpoolflatten</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>avgpool + Flatten for sequential</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def avgpoolflatten():  #%t
+    &#34;&#34;&#34;
+    avgpool + Flatten for sequential
+    &#34;&#34;&#34;
+    return nn.Sequential(Reduce(&#34;b c h w -&gt; b c&#34;, &#34;mean&#34;))  # combine avg pool + view</code></pre>
+</details>
+</dd>
 <dt id="lightningaddon.layers.init_cnn"><code class="name flex">
 <span>def <span class="ident">init_cnn</span></span>(<span>m)</span>
 </code></dt>
@@ -245,64 +269,6 @@ registered hooks while the latter silently ignores them.</p>
 </dd>
 </dl>
 </dd>
-<dt id="lightningaddon.layers.Flatten"><code class="flex name class">
-<span>class <span class="ident">Flatten</span></span>
-</code></dt>
-<dd>
-<div class="desc"><p>Flatten</p>
-<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">class Flatten(nn.Module):  #%t
-    &#34;&#34;&#34;
-    Flatten
-    &#34;&#34;&#34;
-
-    def forward(self, x):
-        return x.view(x.size(0), -1)</code></pre>
-</details>
-<h3>Ancestors</h3>
-<ul class="hlist">
-<li>torch.nn.modules.module.Module</li>
-</ul>
-<h3>Class variables</h3>
-<dl>
-<dt id="lightningaddon.layers.Flatten.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="lightningaddon.layers.Flatten.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-</dl>
-<h3>Methods</h3>
-<dl>
-<dt id="lightningaddon.layers.Flatten.forward"><code class="name flex">
-<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Defines the computation performed at every call.</p>
-<p>Should be overridden by all subclasses.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the :class:<code>Module</code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
-</div></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def forward(self, x):
-    return x.view(x.size(0), -1)</code></pre>
-</details>
-</dd>
-</dl>
-</dd>
 <dt id="lightningaddon.layers.GeneralRelu"><code class="flex name class">
 <span>class <span class="ident">GeneralRelu</span></span>
 <span>(</span><span>leak=None, sub=None, maxv=None)</span>
@@ -376,6 +342,64 @@ registered hooks while the latter silently ignores them.</p>
 </dd>
 </dl>
 </dd>
+<dt id="lightningaddon.layers.flatten"><code class="flex name class">
+<span>class <span class="ident">flatten</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Flatten</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class flatten(nn.Module):  #%t
+    &#34;&#34;&#34;
+    Flatten
+    &#34;&#34;&#34;
+
+    def forward(self, x):
+        return x.view(x.size(0), -1)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="lightningaddon.layers.flatten.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lightningaddon.layers.flatten.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="lightningaddon.layers.flatten.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    return x.view(x.size(0), -1)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
 </dl>
 </section>
 </article>
@@ -392,6 +416,7 @@ registered hooks while the latter silently ignores them.</p>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="lightningaddon.layers.avgpoolflatten" href="#lightningaddon.layers.avgpoolflatten">avgpoolflatten</a></code></li>
 <li><code><a title="lightningaddon.layers.init_cnn" href="#lightningaddon.layers.init_cnn">init_cnn</a></code></li>
 <li><code><a title="lightningaddon.layers.init_default" href="#lightningaddon.layers.init_default">init_default</a></code></li>
 <li><code><a title="lightningaddon.layers.noop" href="#lightningaddon.layers.noop">noop</a></code></li>
@@ -408,19 +433,19 @@ registered hooks while the latter silently ignores them.</p>
 </ul>
 </li>
 <li>
-<h4><code><a title="lightningaddon.layers.Flatten" href="#lightningaddon.layers.Flatten">Flatten</a></code></h4>
-<ul class="">
-<li><code><a title="lightningaddon.layers.Flatten.dump_patches" href="#lightningaddon.layers.Flatten.dump_patches">dump_patches</a></code></li>
-<li><code><a title="lightningaddon.layers.Flatten.forward" href="#lightningaddon.layers.Flatten.forward">forward</a></code></li>
-<li><code><a title="lightningaddon.layers.Flatten.training" href="#lightningaddon.layers.Flatten.training">training</a></code></li>
-</ul>
-</li>
-<li>
 <h4><code><a title="lightningaddon.layers.GeneralRelu" href="#lightningaddon.layers.GeneralRelu">GeneralRelu</a></code></h4>
 <ul class="">
 <li><code><a title="lightningaddon.layers.GeneralRelu.dump_patches" href="#lightningaddon.layers.GeneralRelu.dump_patches">dump_patches</a></code></li>
 <li><code><a title="lightningaddon.layers.GeneralRelu.forward" href="#lightningaddon.layers.GeneralRelu.forward">forward</a></code></li>
 <li><code><a title="lightningaddon.layers.GeneralRelu.training" href="#lightningaddon.layers.GeneralRelu.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="lightningaddon.layers.flatten" href="#lightningaddon.layers.flatten">flatten</a></code></h4>
+<ul class="">
+<li><code><a title="lightningaddon.layers.flatten.dump_patches" href="#lightningaddon.layers.flatten.dump_patches">dump_patches</a></code></li>
+<li><code><a title="lightningaddon.layers.flatten.forward" href="#lightningaddon.layers.flatten.forward">forward</a></code></li>
+<li><code><a title="lightningaddon.layers.flatten.training" href="#lightningaddon.layers.flatten.training">training</a></code></li>
 </ul>
 </li>
 </ul>

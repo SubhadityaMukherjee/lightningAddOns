@@ -2,6 +2,10 @@
 
 - Additional functionality for [Pytorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning)
 
+# Pip!!
+- Now you can directly do a pip install
+- pip install lightningaddon
+
 # Useful functions
 - Please check [DOCUMENTATION](https://subhadityamukherjee.github.io/lightningAddOns/)
 - For some useful functions check [use](useful.md)
@@ -31,6 +35,9 @@
 ## Models
 - xresnet (all variants)
 
+## Requirements
+- PyTorchLightning. (This will install pretty much everything else)
+- einops
 
 ## FAQ
 - Why?

@@ -17,13 +17,6 @@ This module contains all the new add ons for torch
 torch.Tensor.ndim = property(lambda x: len(x.shape))
 
 
-def flatten(x):
-    """
-    Flatten tensor
-    """
-    return x.view(x.shape[0], -1)
-
-
 def get_hist(h):
     """
     grab histogram
@@ -145,12 +138,12 @@ def param_state(x):
     return x.requires_grad
 
 
-def total_layer_state(learn):  #%t
+def total_layer_state(model):  #%t
     """
     Get number of frozen, unfrozen and total layers
 
     """
-    ps = [param_state(x) for x in learn.model.parameters()]
+    ps = [param_state(x) for x in model.parameters()]
     frozen = ps.count(False)
     return f"Frozen: {frozen}, Not: {len(ps)-frozen}, Total: {len(ps)}"
 
@@ -193,4 +186,5 @@ def visualize_model(model, inp_size=[1, 3, 64, 64], device="cuda:0"):  #%t
     """
     model = model.to(device)
     model.eval()
-    return hl.build_graph(model, torch.zeros(inp_size).to(device))
+    graph = hl.build_graph(model, torch.zeros(inp_size).to(device))
+    return graph

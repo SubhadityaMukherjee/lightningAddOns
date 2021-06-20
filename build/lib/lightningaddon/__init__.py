@@ -1,3 +1,5 @@
 from .general import *
-from .torchfuncs import *
+from .loss import *
 from .main import *
+from .models import *
+from .tests import *

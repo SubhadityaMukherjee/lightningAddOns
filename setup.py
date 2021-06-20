@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.1",
     author="Subhaditya Mukherjee",
     author_email="msubhaditya@gmail.com",
-    description="Add ons for pytorch lightnin",
+    description="Add ons for pytorch lightning",
     license="GPLv3+",
     long_description=long_description,
     long_description_content_type="text/markdown",
