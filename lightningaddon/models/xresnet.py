@@ -62,7 +62,7 @@ class XResNet(nn.Sequential):
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
             *res_layers,
             nn.AdaptiveAvgPool2d(1),
-            Flatten(),
+            flatten(),
             nn.Linear(nfs[-1] * expansion, c_out),
         )
         init_cnn(res)

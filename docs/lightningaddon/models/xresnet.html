@@ -90,7 +90,7 @@ class XResNet(nn.Sequential):
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
             *res_layers,
             nn.AdaptiveAvgPool2d(1),
-            Flatten(),
+            flatten(),
             nn.Linear(nfs[-1] * expansion, c_out),
         )
         init_cnn(res)
@@ -379,7 +379,7 @@ model = nn.Sequential(OrderedDict([
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
             *res_layers,
             nn.AdaptiveAvgPool2d(1),
-            Flatten(),
+            flatten(),
             nn.Linear(nfs[-1] * expansion, c_out),
         )
         init_cnn(res)
@@ -440,7 +440,7 @@ def create(cls, expansion, layers, c_in=3, c_out=1000):
         nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
         *res_layers,
         nn.AdaptiveAvgPool2d(1),
-        Flatten(),
+        flatten(),
         nn.Linear(nfs[-1] * expansion, c_out),
     )
     init_cnn(res)
