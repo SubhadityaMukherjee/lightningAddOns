@@ -16,6 +16,7 @@ This module contains all the new add ons for torch
 
 torch.Tensor.ndim = property(lambda x: len(x.shape))
 
+
 def get_hist(h):
     """
     grab histogram

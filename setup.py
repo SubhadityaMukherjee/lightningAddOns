@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="lightningaddon",
-    version="0.0.1",
+    version="0.0.2",
     author="Subhaditya Mukherjee",
     author_email="msubhaditya@gmail.com",
     description="Add ons for pytorch lightning",

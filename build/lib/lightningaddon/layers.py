@@ -1,10 +1,9 @@
 import torch
 import torch.nn.functional as F
 import torchvision.models as m
-from torch import nn
-from einops import rearrange, reduce, asnumpy, parse_shape
+from einops import asnumpy, parse_shape, rearrange, reduce
 from einops.layers.torch import Rearrange, Reduce
-
+from torch import nn
 
 """
 This module contains all the new layers 
@@ -40,11 +39,13 @@ def init_default(m: nn.Module, func=nn.init.kaiming_normal_) -> nn.Module:  #%t
             m.bias.data.fill_(0.0)
     return m
 
+
 def avgpoolflatten():  #%t
     """
     avgpool + Flatten for sequential
     """
     return nn.Sequential(Reduce("b c h w -> b c", "mean"))  # combine avg pool + view
+
 
 class flatten(nn.Module):  #%t
     """
@@ -87,4 +88,3 @@ class AdaptiveConcatPool2d(nn.Module):  #%t
 
     def forward(self, x):
         return torch.cat([self.mp(x), self.ap(x)], 1)
-

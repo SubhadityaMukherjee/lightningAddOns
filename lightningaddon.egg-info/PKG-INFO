@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: lightningaddon
-Version: 0.0.1
+Version: 0.0.2
 Summary: Add ons for pytorch lightning
 Home-page: https://github.com/SubhadityaMukherjee/lightningAddOns
 Author: Subhaditya Mukherjee
@@ -15,6 +15,10 @@ Description-Content-Type: text/markdown
 # Lightning AddOns
 
 - Additional functionality for [Pytorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning)
+
+# Pip!!
+- Now you can directly do a pip install
+- pip install lightningaddon
 
 # Useful functions
 - Please check [DOCUMENTATION](https://subhadityamukherjee.github.io/lightningAddOns/)
@@ -45,6 +49,9 @@ Description-Content-Type: text/markdown
 ## Models
 - xresnet (all variants)
 
+## Requirements
+- PyTorchLightning. (This will install pretty much everything else)
+- einops
 
 ## FAQ
 - Why?

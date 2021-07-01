@@ -1,10 +1,24 @@
 # Useful functions
+- loss.py:Function: logsumexp(x):
+- loss.py:Function: flatten_check(out, targ):
+- loss.py:Function: exp_rmspe(pred, targ):
+- loss.py:Function: mean_squared_error(pred, targ):
+- loss.py:Function: psnr(input, targs):
+- loss.py:Function: explained_variance(pred, targ):
+- loss.py:Function: r2_score(pred, targ):
+- loss.py:Function: auc_roc_score(input, targ):
+- loss.py:Function: roc_curve(input, targ):
+- loss.py:Function: dice(input, targs, iou=False, eps=1e-8):
+- loss.py:Function: WasserteinLoss(real, fake):
+- loss.py:Function: fbeta(y_pred, y_true, thresh=0.2, beta=2, eps=1e-9, sigmoid=True):
 - layers.py:Function: init_cnn(m):
 - layers.py:Function: init_Function:ault(m: nn.Module, func=nn.init.kaiming_normal_) -> nn.Module:
 - layers.py:Function: avgpoolflatten():
 - layers.py:Class : flatten(nn.Module):
 - layers.py:Class : GeneralRelu(nn.Module):
 - layers.py:Class : AdaptiveConcatPool2d(nn.Module):
+- tests.py:Function: test_eq(a, b):
+- tests.py:Function: test_near(a, b):
 - main.py:Function: find_modules(m, cond):
 - main.py:Function: is_lin_layer(l):
 - main.py:Function: clear_memory():
@@ -22,17 +36,3 @@
 - general.py:Function: parallel(func, arr: Collection, max_workers: int = None, leave=False):
 - general.py:Function: download_and_check(url, fpath=".", name=""):
 - general.py:Function: get_last_log(name, fpath="logs"):
-- loss.py:Function: logsumexp(x):
-- loss.py:Function: flatten_check(out, targ):
-- loss.py:Function: exp_rmspe(pred, targ):
-- loss.py:Function: mean_squared_error(pred, targ):
-- loss.py:Function: psnr(input, targs):
-- loss.py:Function: explained_variance(pred, targ):
-- loss.py:Function: r2_score(pred, targ):
-- loss.py:Function: auc_roc_score(input, targ):
-- loss.py:Function: roc_curve(input, targ):
-- loss.py:Function: dice(input, targs, iou=False, eps=1e-8):
-- loss.py:Function: WasserteinLoss(real, fake):
-- loss.py:Function: fbeta(y_pred, y_true, thresh=0.2, beta=2, eps=1e-9, sigmoid=True):
-- tests.py:Function: test_eq(a, b):
-- tests.py:Function: test_near(a, b):
